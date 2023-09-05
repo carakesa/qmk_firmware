@@ -30,5 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //#define OLED_DRIVER
 
-#define QUICK_TAP_TERM 0
-#define TAPPING_TERM 100
+#define QUICK_TAP_TERM 120
+#define TAPPING_TERM 200
+#define HOLD_ON_OTHER_KEY_PRESS
+
