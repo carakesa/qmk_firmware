@@ -39,68 +39,68 @@ enum custom_keycodes {
   TOG_ASH // auto shift toggle
 };
 
-enum layouts {
-  BASE,
-  NAV ,
-  MOUS,
-  BUTN,
-  MEDI,
-  NUM ,
-  SYMB,
-  FUN ,
+enum layer_number {
+  _BASE = 0,
+  _NAV = 1,
+  _MOUS = 2,
+  _BUTN = 3,
+  _MEDI = 4,
+  _NUM = 5,
+  _SYMB = 6,
+  _FUN = 7,
 };
 
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [BASE] = LAYOUT_miryoku(
+  [_BASE] = LAYOUT(
  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_EQL,
  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
  KC_ESC,  MY_AGUI,MY_SALT, MY_DSFT, MY_FCTL, KC_GR,                         KC_H, MY_JCTL, MY_KSFT, MY_LALT, MY_CGUI,    KC_QUOT,
  KC_LSFT,  TG_BUTN,  KC_X,   KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC,    KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH,
                       TG_MEDI, TG_NAV, KC_SPC, TG_MOUS,        TG_SYMB, KC_SPC, TG_NUM, TG_FUN
   ),
-  [NAV ] = LAYOUT_miryoku(
+  [_NAV] = LAYOUT(
  _______, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______,                 KC_CUT , KC_COPY, KC_PSTE, KC_UNDO, _______, _______,
     _______, _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL,                 KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_INS, _______, _______,
                       _______, _______, _______,  _______,      KC_ENT , KC_SPC, KC_BSPC, KC_DEL
   ),
-  [MOUS] = LAYOUT_miryoku(
+  [_MOUS] = LAYOUT(
     _______, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______,                    KC_CUT , KC_COPY, KC_PSTE, KC_UNDO, _______, _______,
     _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
     _______, _______, _______, _______, _______, _______,  _______, _______, KC_WH_L, KC_WH_D, KC_MS_U, KC_MS_R, KC_INS , _______,
                   _______, _______, _______, _______,                            KC_BTN2, KC_BTN1, KC_BTN3, _______
   ),
-  [BUTN] = LAYOUT_miryoku(
+  [_BUTN] = LAYOUT(
     _______,  _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, QK_BOOT,
     _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                     _______, _______, _______, _______, _______, _______,
     _______, _______, KC_CUT , KC_COPY, KC_PSTE, _______,  _______,  _______, _______, _______, _______, _______, _______, _______,
                            _______, _______, _______, _______,                     _______, _______, _______, _______
   ),
-  [MEDI] = LAYOUT_miryoku(
+  [_MEDI] = LAYOUT(
     _______,  _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, QK_BOOT,
   _______,  KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                   _______, _______, _______, _______, _______,  _______,
   _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______, _______,  _______,
                       _______, _______, _______, _______,        _______, _______, _______, _______
   ),
-  [NUM ] = LAYOUT_miryoku(
+  [_NUM] = LAYOUT(
     _______,  _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, QK_BOOT,
  _______,    KC_LBRC, KC_7   , KC_8   , KC_9   , KC_RBRC,        _______, _______, _______, _______, _______, _______,
  _______,   KC_QUOT, KC_4   , KC_5   , KC_6   , KC_EQL ,        _______, _______, KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI,
  _______,    KC_GRV , KC_1   , KC_2   , KC_3   , KC_BSLS,        _______, _______, _______, _______, _______, _______, _______, _______,
              _______, KC_0   , KC_DOT , KC_MINS,        _______, _______, _______, _______
   ),
-  [SYMB] = LAYOUT_miryoku(
+  [_SYMB] = LAYOUT(
   _______,  _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, QK_BOOT,
   _______,  KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR,        _______, _______, _______, _______, _______,
   _______,  KC_DQT , KC_DLR , KC_PERC, KC_CIRC, KC_PLUS,        _______, KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI, _______
   _______,  KC_TILD, KC_EXLM, KC_AT  , KC_HASH, KC_PIPE, _______, _______,       _______, _______, _______, _______, _______, _______,
             _______, KC_LPRN, KC_RPRN, KC_UNDS,        _______, _______, _______, _______
   ),
-  [FUN ] = LAYOUT_miryoku(
+  [_FUN] = LAYOUT(
   _______,  _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, QK_BOOT,
   _______, KC_F12 , KC_F7  , KC_F8  , KC_F9  , KC_PSCR,        _______, _______, _______, _______, _______, _______,
   _______, KC_F11 , KC_F4  , KC_F5  , KC_F6  , _______,        _______, KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI, _______,
@@ -279,44 +279,44 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // set_timelog();
   }
 
-  switch (keycode) {
-    case QWERTY:
-      if (record->event.pressed) {
-        set_single_persistent_default_layer(_QWERTY);
-      }
-      return false;
-      break;
-    case LOWER:
-      if (record->event.pressed) {
-        layer_on(_LOWER);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      } else {
-        layer_off(_LOWER);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      }
-      return false;
-      break;
-    case RAISE:
-      if (record->event.pressed) {
-        layer_on(_RAISE);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      } else {
-        layer_off(_RAISE);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      }
-      return false;
-      break;
-    case ADJUST:
-        if (record->event.pressed) {
-          layer_on(_ADJUST);
-        } else {
-          layer_off(_ADJUST);
-        }
-        return false;
-        break;
-  }
-  return true;
-}
+//   switch (keycode) {
+//     case QWERTY:
+//       if (record->event.pressed) {
+//         set_single_persistent_default_layer(_QWERTY);
+//       }
+//       return false;
+//       break;
+//     case LOWER:
+//       if (record->event.pressed) {
+//         layer_on(_LOWER);
+//         update_tri_layer(_LOWER, _RAISE, _ADJUST);
+//       } else {
+//         layer_off(_LOWER);
+//         update_tri_layer(_LOWER, _RAISE, _ADJUST);
+//       }
+//       return false;
+//       break;
+//     case RAISE:
+//       if (record->event.pressed) {
+//         layer_on(_RAISE);
+//         update_tri_layer(_LOWER, _RAISE, _ADJUST);
+//       } else {
+//         layer_off(_RAISE);
+//         update_tri_layer(_LOWER, _RAISE, _ADJUST);
+//       }
+//       return false;
+//       break;
+//     case ADJUST:
+//         if (record->event.pressed) {
+//           layer_on(_ADJUST);
+//         } else {
+//           layer_off(_ADJUST);
+//         }
+//         return false;
+//         break;
+//   }
+//   return true;
+// }
 /
 bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
     switch(keycode) {
