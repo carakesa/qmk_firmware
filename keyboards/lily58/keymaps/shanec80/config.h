@@ -27,7 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MASTER_LEFT
 // #define MASTER_RIGHT
 // #define EE_HANDS
-
+#define SPLIT_USB_TIMEOUT 3000
 //#define OLED_DRIVER
 
 #define QUICK_TAP_TERM 120
