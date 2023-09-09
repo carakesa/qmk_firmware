@@ -31,7 +31,7 @@ enum custom_keycodes {
 #define TG_NAV  LT(NAV , KC_SPC )
 #define TG_MOUS LT(MOUS, KC_TAB )
 #define TG_SYMB LT(SYMB, KC_ENT )
-#define TG_NUM  LT(NUM , KC_BSPC)
+#define TG_NUM  LT(NUM , KC_SPC)
 #define TG_FUN  LT(FUN , KC_DEL )
 #define TG_BUTN LT(BUTN, KC_Z   )
 
@@ -49,11 +49,11 @@ enum layer_number {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  [BASE] = LAYOUT(
- KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC_DEL,
+ KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_EQL,
  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
  KC_ESC,  MY_AGUI,MY_SALT, MY_DSFT, MY_FCTL, KC_G,                         KC_H, MY_JCTL, MY_KSFT, MY_LALT, MY_CGUI,    KC_QUOT,
  KC_LSFT,  TG_BUTN,  KC_X,   KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC,    KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_EQL,
-                      TG_MEDI, TG_NAV, KC_SPC, TG_MOUS,        TG_SYMB, KC_SPC, TG_NUM, TG_FUN
+                      TG_MEDI, TG_NAV, TG_NAV, TG_MOUS,        TG_SYMB, TG_NUM, KC_BSPC, TG_FUN
 ),
 
  [NAV] = LAYOUT(
