@@ -11,38 +11,29 @@
   #include "ssd1306.h"
 #endif
 
+//clang-format off
 enum custom_keycodes {
   KC_CUST = SAFE_RANGE,
+  TOG_ASHFT, // auto shift toggle
+  KC_BSPC_DEL,
 };
-
 
 #define MY_AGUI MT(MOD_LGUI, KC_A)
 #define MY_SALT MT(MOD_LALT, KC_S)
 #define MY_DSFT MT(MOD_LSFT, KC_D)
 #define MY_FCTL MT(MOD_LCTL, KC_F)
-
 #define MY_JCTL MT(MOD_RCTL, KC_J)
 #define MY_KSFT MT(MOD_RSFT, KC_K)
 #define MY_LALT MT(MOD_LALT, KC_L)
 #define MY_CGUI MT(MOD_RGUI, KC_SCLN)
-
 #define MY_ESC MT(MOD_LCTL, KC_ESCAPE)
-
 #define TG_MEDI LT(MEDI, KC_ESC )
 #define TG_NAV  LT(NAV , KC_SPC )
 #define TG_MOUS LT(MOUS, KC_TAB )
-
 #define TG_SYMB LT(SYMB, KC_ENT )
 #define TG_NUM  LT(NUM , KC_BSPC)
 #define TG_FUN  LT(FUN , KC_DEL )
-
 #define TG_BUTN LT(BUTN, KC_Z   )
-
-
-//enum custom_keycodes {
-//  RGB_SLD = SAFE_RANGE,
-// TOG_ASH // auto shift toggle
-//};
 
 enum layer_number {
   BASE = 0,
@@ -58,10 +49,10 @@ enum layer_number {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  [BASE] = LAYOUT(
- KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_EQL,
+ KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC_DEL,
  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
  KC_ESC,  MY_AGUI,MY_SALT, MY_DSFT, MY_FCTL, KC_G,                         KC_H, MY_JCTL, MY_KSFT, MY_LALT, MY_CGUI,    KC_QUOT,
- KC_LSFT,  TG_BUTN,  KC_X,   KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC,    KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, _______,
+ KC_LSFT,  TG_BUTN,  KC_X,   KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC,    KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_EQL,
                       TG_MEDI, TG_NAV, KC_SPC, TG_MOUS,        TG_SYMB, KC_SPC, TG_NUM, TG_FUN
 ),
 
@@ -146,8 +137,9 @@ static const char PROGMEM mac_logo[] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
 /* Smart Backspace Delete */
 
-//bool            shift_held = false;
-//static uint16_t held_shift = 0;
+bool            shift_held = false;
+static uint16_t held_shift = 0;
+
 
 /* KEYBOARD PET START */
 
@@ -413,9 +405,71 @@ bool oled_task_user(void) {
 #endif
 
             /* KEYBOARD PET STATUS START */
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+ switch (keycode) {
+        case KC_COPY:
+            if (record->event.pressed) {
+                register_mods(mod_config(MOD_LCTL));
+                register_code(KC_C);
+            } else {
+                unregister_mods(mod_config(MOD_LCTL));
+                unregister_code(KC_C);
+            }
+            return false;
+        case KC_PSTE:
+            if (record->event.pressed) {
+                register_mods(mod_config(MOD_LCTL));
+                register_code(KC_V);
+            } else {
+                unregister_mods(mod_config(MOD_LCTL));
+                unregister_code(KC_V);
+            }
+            return false;
+        case KC_CUT:
+            if (record->event.pressed) {
+                register_mods(mod_config(MOD_LCTL));
+                register_code(KC_X);
+            } else {
+                unregister_mods(mod_config(MOD_LCTL));
+                unregister_code(KC_X);
+            }
+            return false;
+            break;
+        case KC_UNDO:
+            if (record->event.pressed) {
+                register_mods(mod_config(MOD_LCTL));
+                register_code(KC_Z);
+            } else {
+                unregister_mods(mod_config(MOD_LCTL));
+                unregister_code(KC_Z);
+            }
+            return false;
 
-        case KC_LCTL:
-        case KC_RCTL:
+            /* Smart Backspace Delete */
+
+        case MY_DSFT:
+        case MY_KSFT:
+            shift_held = record->event.pressed;
+            held_shift = keycode;
+            break;
+        case KC_BSPC_DEL:
+            if (record->event.pressed) {
+                if (shift_held) {
+                    unregister_code(held_shift);
+                    register_code(KC_DEL);
+                } else {
+                    register_code(KC_BSPC);
+                }
+            } else {
+                unregister_code(KC_DEL);
+                unregister_code(KC_BSPC);
+                if (shift_held) {
+                    register_code(held_shift);
+                }
+            }
+            return false;
+        case MY_FCTL:
+        case MY_JCTL:
             if (record->event.pressed) {
                 isSneaking = true;
             } else {
@@ -435,4 +489,3 @@ bool oled_task_user(void) {
     }
     return true;
 }
-
