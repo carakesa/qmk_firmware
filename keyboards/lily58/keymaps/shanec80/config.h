@@ -19,16 +19,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define USE_MATRIX_I2C
 
 /* Select hand configuration */
-
 #define MASTER_LEFT
-// #define MASTER_RIGHT
-// #define EE_HANDS
-#define SPLIT_USB_TIMEOUT 3000
-//#define OLED_DRIVER
 
+#define SPLIT_USB_TIMEOUT 3000
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+#define CAPS_WORD_INVERT_ON_SHIFT
 #define QUICK_TAP_TERM 200
 #define TAPPING_TERM 200
+
 //#define HOLD_ON_OTHER_KEY_PRESS
-#define PERMISSIVE_HOL
+
+#define PERMISSIVE_HOLD
 #define OLED_TIMEOUT 120000
 #define OLED_BRIGHTNESS 120
