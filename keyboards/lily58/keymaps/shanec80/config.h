@@ -1,8 +1,4 @@
-/*
-This is the c configuration file for the keymap
-
-Copyright 2012 Jun Wako <wakojun@gmail.com>
-Copyright 2015 Jack Humbert
+/* This is the c configuration file for the keymap Copyright 2012 Jun Wako <wakojun@gmail.com> Copyright 2015 Jack Humbert
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -30,7 +26,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SPLIT_USB_TIMEOUT 3000
 //#define OLED_DRIVER
 
-#define QUICK_TAP_TERM 120
+#define QUICK_TAP_TERM 200
 #define TAPPING_TERM 200
 //#define HOLD_ON_OTHER_KEY_PRESS
-#define PERMISSIVE_HOLD
+#define PERMISSIVE_HOL
+#define OLED_TIMEOUT 120000
+#define OLED_BRIGHTNESS 120
