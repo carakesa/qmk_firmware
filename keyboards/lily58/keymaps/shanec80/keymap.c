@@ -46,6 +46,51 @@ enum layer_number {
   FUN = 7,
 };
 
+enum combos {
+  CC_CAPS,
+  IO_TOGG,
+  QE_SHFT,
+//  SD_LAYER
+};
+
+const uint16_t PROGMEM cc_combo[] = {KC_C, KC_COMM, COMBO_END};
+const uint16_t PROGMEM io_combo[] = {KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM qe_combo[] = {KC_A, KC_W, COMBO_END};
+//const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};
+
+combo_t key_combos[] = {
+  [AC_CAPS] = COMBO(cc_combo, CW_TOGG),
+  [IO_TOGG] = COMBO(io_combo, CM_TOGG),
+  [AW_SHFT] = COMBO(qe_combo, TOG_ASHFT),
+//  [SD_LAYER] = COMBO(sd_combo, MO(_LAYER)),
+};
+
+bool caps_word_press_user(uint16_t keycode) {
+  switch (keycode) {
+    // Keycodes that continue Caps Word, with shift applied.
+    case KC_A ... KC_Z:
+      add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to the next key.
+      return true;
+
+    // Keycodes that continue Caps Word, without shifting.
+    case KC_1 ... KC_0:
+    case KC_BSPC:
+    case KC_DEL:
+    // I have a dedicated underscore key, so no need to shift KC_MINS.
+    case KC_MINS:
+    case KC_UNDS:
+
+        return true;
+
+    default:
+      return false;  // Deactivate Caps Word.
+  }
+};
+
+
+
+// clang-format off
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  [BASE] = LAYOUT(
