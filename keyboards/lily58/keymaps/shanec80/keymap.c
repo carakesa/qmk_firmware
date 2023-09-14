@@ -102,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
  [NAV] = LAYOUT(
- _______, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, _______,
+ _______, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, KC_PSCR,
     _______, _______, _______, _______, _______, _______,                 KC_CUT , KC_COPY, KC_PSTE, KC_UNDO, _______, _______,
     _______, _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL,                 KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_END, _______,
     _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_INS, _______, _______,
@@ -124,10 +124,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                            _______, _______, _______, _______,                     _______, _______, _______, _______
 ),
  [MEDI] = LAYOUT(
-    _______, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, _______,
+     _______, KC_MUTE, KC_VOLD, KC_VOLU,_______, _______,                    KC_BRID, KC_BRIU, _______, _______, _______, _______,
         _______,  _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, QK_BOOT,
-  _______,  KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                   _______, _______, _______, _______, _______,  _______,
-  _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______, _______,  _______,
+  _______,  KC_MPRV, KC_MNXT, KC_LSFT, KC_LCTL, _______,                   _______, _______, _______, _______, _______,  _______,
+  _______, _______, _______, _______, _______,  _______, KC_MPLY, KC_MPLY, _______, _______, _______, _______, _______,  _______,
                       _______, _______, _______, _______,        _______, _______, _______, _______
 ),
  [NUM] = LAYOUT(
@@ -349,36 +349,6 @@ static void print_status_narrow(void) {
         oled_write_raw_P(arch_btw, sizeof(arch_btw));
     }
 
-    oled_set_cursor(0, 3);
-
-    // switch (get_highest_layer(default_layer_state)) {
-    //     case BASE:
-    //         oled_write("QWRTY", false);
-    //         break;
-    //     case NAV:
-    //         oled_write("Nav", false);
-    //         break;
-    //     case MOUS:
-    //         oled_write("Mouse", false);
-    //         break;
-    //     case BUTN:
-    //         oled_write("Buttn", false);
-    //         break;
-    //     case MEDI:
-    //         oled_write("Media", false);
-    //         break;
-    //     case NUM:
-    //         oled_write("Numb", false);
-    //         break;
-    //     case SYMB:
-    //         oled_write("Symbl", false);
-    //         break;
-    //     case FUN:
-    //         oled_write("Func", false);
-    //         break;
-    //     default:
-    //         oled_write("UNDEF", false);
-    // }
 
     oled_set_cursor(0, 5);
 
@@ -418,25 +388,27 @@ static void print_status_narrow(void) {
      }
 
 
-   // /* caps lock */
-    // oled_set_cursor(0, 8);
-    // oled_write("CPSLK", led_usb_state.caps_lock);
-
     /* KEYBOARD PET RENDER START */
 
     render_luna(0, 13);
 
    /* KEYBOARD PET RENDER END */
 
-     if (is_caps_word_on()) {
+ /*    WORKS! --- but cuts off Luna's head
+  *
+  * if (is_caps_word_on()) {
    // if (active)   Do something when Caps Word activates.
        oled_set_cursor(0,8);
-       oled_write_P(PSTR(" CpsWrd"), false);
+       oled_write_P(PSTR("CpsWrd"), false);
     } else if (host_keyboard_led_state().caps_lock) {
-        oled_write_P(PSTR(" CAPS"), false);
+        oled_set_cursor(0,8);
+        oled_write_P(PSTR("CPSLK"), false);
     } oled_write_ln("", false);
         // Do something when Caps Word deactivates.
+*/
 };
+
+#    endif
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_270; }
 
@@ -456,7 +428,6 @@ bool oled_task_user(void) {
     return false;
 }
 
-#endif
 
             /* KEYBOARD PET STATUS START */
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
