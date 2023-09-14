@@ -34,7 +34,7 @@ enum custom_keycodes {
 #define TG_NUM  LT(NUM , KC_SPC)
 #define TG_FUN  LT(FUN , KC_DEL )
 #define TG_BUTN LT(BUTN, KC_Z   )
-
+//  #define caps_word_set_user(bool active)
 enum layer_number {
   BASE = 0,
   NAV = 1,
@@ -59,9 +59,9 @@ const uint16_t PROGMEM qe_combo[] = {KC_A, KC_W, COMBO_END};
 //const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};
 
 combo_t key_combos[] = {
-  [AC_CAPS] = COMBO(cc_combo, CW_TOGG),
+  [CC_CAPS] = COMBO(cc_combo, CW_TOGG),
   [IO_TOGG] = COMBO(io_combo, CM_TOGG),
-  [AW_SHFT] = COMBO(qe_combo, TOG_ASHFT),
+  [QE_SHFT] = COMBO(qe_combo, TOG_ASHFT),
 //  [SD_LAYER] = COMBO(sd_combo, MO(_LAYER)),
 };
 
@@ -340,7 +340,6 @@ static void print_logo_narrow(void) {
     oled_set_cursor(0, 15);
     oled_write(" wpm", false);
 }
-
 static void print_status_narrow(void) {
     /* Print current mode */
     oled_set_cursor(0, 0);
@@ -418,7 +417,8 @@ static void print_status_narrow(void) {
              oled_write("UNDEF", false);
      }
 
-    // /* caps lock */
+
+   // /* caps lock */
     // oled_set_cursor(0, 8);
     // oled_write("CPSLK", led_usb_state.caps_lock);
 
@@ -426,8 +426,17 @@ static void print_status_narrow(void) {
 
     render_luna(0, 13);
 
-    /* KEYBOARD PET RENDER END */
-}
+   /* KEYBOARD PET RENDER END */
+
+     if (is_caps_word_on()) {
+   // if (active)   Do something when Caps Word activates.
+       oled_set_cursor(0,8);
+       oled_write_P(PSTR(" CpsWrd"), false);
+    } else if (host_keyboard_led_state().caps_lock) {
+        oled_write_P(PSTR(" CAPS"), false);
+    } oled_write_ln("", false);
+        // Do something when Caps Word deactivates.
+};
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_270; }
 
