@@ -14,7 +14,6 @@
 //clang-format off
 enum custom_keycodes {
   KC_CUST = SAFE_RANGE,
-  TOG_ASHFT, // auto shift toggle
   KC_BSPC_DEL,
 };
 
@@ -34,6 +33,11 @@ enum custom_keycodes {
 #define TG_NUM  LT(NUM , KC_SPC)
 #define TG_FUN  LT(FUN , KC_DEL )
 #define TG_BUTN LT(BUTN, KC_Z   )
+#define SELWORD
+#define SELLINE
+
+
+
 //  #define caps_word_set_user(bool active)
 enum layer_number {
   BASE = 0,
@@ -50,18 +54,23 @@ enum combos {
   CC_CAPS,
   IO_TOGG,
   QE_SHFT,
+  VI_COPY,
+  VI_PASTE,
 //  SD_LAYER
 };
 
 const uint16_t PROGMEM cc_combo[] = {KC_C, KC_COMM, COMBO_END};
 const uint16_t PROGMEM io_combo[] = {KC_I, KC_O, COMBO_END};
-const uint16_t PROGMEM qe_combo[] = {KC_A, KC_W, COMBO_END};
+const uint16_t PROGMEM cp_combo[] = {KC_LCTL, KC_INS, COMBO_END};
+const uint16_t PROGMEM pst_combo[] = {KC_LSFT, KC_INS, COMBO_END};
 //const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};
 
 combo_t key_combos[] = {
   [CC_CAPS] = COMBO(cc_combo, CW_TOGG),
   [IO_TOGG] = COMBO(io_combo, CM_TOGG),
   [QE_SHFT] = COMBO(qe_combo, TOG_ASHFT),
+  [VI_COPY] = COMBO(cp_combo, VI_COPY),
+  [VI_PASTE] = COMBO(pst_combo, VI_PASTE),
 //  [SD_LAYER] = COMBO(sd_combo, MO(_LAYER)),
 };
 
@@ -87,6 +96,22 @@ bool caps_word_press_user(uint16_t keycode) {
   }
 };
 
+case SELWORD:  // Selects the current word under the cursor.
+  if (record->event.pressed) {
+    SEND_STRING(SS_LCTL(SS_TAP(X_RGHT) SS_LSFT(SS_TAP(X_LEFT))));
+    // Mac users, change LCTL to LALT:
+    // SEND_STRING(SS_LALT(SS_TAP(X_RGHT) SS_LSFT(SS_TAP(X_LEFT))));
+  }
+  return false;
+
+case SELLINE:  // Selects the current line.
+  if (record->event.pressed) {
+    SEND_STRING(SS_TAP(X_HOME) SS_LSFT(SS_TAP(X_END)));
+    // Mac users, use:
+    // SEND_STRING(SS_LCTL("a" SS_LSFT("e")));
+  }
+  return false;
+
 
 
 // clang-format off
@@ -103,9 +128,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  [NAV] = LAYOUT(
  _______, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, KC_PSCR,
-    _______, _______, _______, _______, _______, _______,                 KC_CUT , KC_COPY, KC_PSTE, KC_UNDO, _______, _______,
-    _______, _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL,                 KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_END, _______,
-    _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_INS, _______, _______,
+    _______, _______, _______, _______, _______, _______,                 VI_COPY, KC_COPY, KC_PSTE, KC_UNDO, VI_PASTE, _______,
+    _______, _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL,                 KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_END, SELWORD,
+    _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END, KC_INS, _______, SELLINE,
                       _______, _______, _______,  _______,      KC_ENT , KC_SPC, KC_BSPC, KC_DEL
 ),
 
