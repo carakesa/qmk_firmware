@@ -19,7 +19,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Select hand configuration */
 #define MASTER_LEFT
-
 #define SPLIT_USB_TIMEOUT 3000
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 #define CAPS_WORD_INVERT_ON_SHIFT
@@ -27,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 200
 
 //#define HOLD_ON_OTHER_KEY_PRESS
-
 #define PERMISSIVE_HOLD
 #define OLED_TIMEOUT 120000
 #define OLED_BRIGHTNESS 120
+
