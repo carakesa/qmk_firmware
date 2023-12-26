@@ -420,36 +420,24 @@ static void print_status_narrow(void) {
              oled_write("UNDEF", false);
      }
 
-
-    /* KEYBOARD PET RENDER START */
+   /* KEYBOARD PET RENDER START */
 
     render_luna(0, 13);
 
-   /* KEYBOARD PET RENDER END */
-
- /*    WORKS! --- but cuts off Luna's head
-  *
-  * if (is_caps_word_on()) {
-   // if (active)   Do something when Caps Word activates.
-       oled_set_cursor(0,8);
-       oled_write_P(PSTR("CpsWrd"), false);
-    } else if (host_keyboard_led_state().caps_lock) {
-        oled_set_cursor(0,8);
-        oled_write_P(PSTR("CPSLK"), false);
-    } oled_write_ln("", false);
-        // Do something when Caps Word deactivates.
-*/
-};
-
-#    endif
+    /* KEYBOARD PET RENDER END */
+}
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_270; }
+
 bool oled_task_user(void) {
-//***** KEYBOARD PET VARIABLES START ********//
+    /* KEYBOARD PET VARIABLES START */
+
     current_wpm   = get_current_wpm();
     led_usb_state = host_keyboard_led_state();
-//***** KEYBOARD PET VARIABLES END ********//
 
+    /* KEYBOARD PET VARIABLES END */
+
+    if (is_keyboard_master()) {
         print_status_narrow();
     } else {
         print_logo_narrow();
@@ -457,7 +445,7 @@ bool oled_task_user(void) {
     return false;
 }
 
-
+#endif
 // ---- MACROS and Luna Status (Luna at the End) ----- //
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
