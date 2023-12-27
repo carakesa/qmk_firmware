@@ -1,3 +1,5 @@
+// sac
+
 #include QMK_KEYBOARD_H
 
 #include <stdio.h>
@@ -32,7 +34,7 @@ enum custom_keycodes {
 #define TG_SYMB LT(SYMB, KC_ENT )
 #define TG_NUM  LT(NUM , KC_SPC)
 #define TG_FUN  LT(FUN , KC_DEL )
-#define TG_BUTN LT(BUTN, KC_Z   )
+//#define TG_BUTN LT(BUTN, KC_Z   )
 
 
 // LAYERS
@@ -41,7 +43,7 @@ enum layer_number {
   GAME,
   NAV,
   MOUS,
-  BUTN,
+ // BUTN,
   MEDI,
   NUM,
   FUN,
@@ -50,7 +52,7 @@ enum layer_number {
 
 // COMBOS
 enum combos {
-  CC_CAPS,
+//  CC_CAPS,
   IO_TOGG,
 //  QE_SHFT,
   VI_COPY,
@@ -59,7 +61,7 @@ enum combos {
 //  SD_LAYER
 };
 
-const uint16_t PROGMEM cc_combo[] = {KC_C, KC_COMM, COMBO_END};
+//const uint16_t PROGMEM cc_combo[] = {KC_C, KC_COMM, COMBO_END};
 const uint16_t PROGMEM io_combo[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM cp_combo[] = {KC_LCTL, KC_INS, COMBO_END};
 const uint16_t PROGMEM pst_combo[] = {KC_LSFT, KC_INS, COMBO_END};
@@ -67,7 +69,7 @@ const uint16_t PROGMEM del_combo[] = {MY_DSFT, KC_BSPC, COMBO_END};
 //const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};
 
 combo_t key_combos[] = {
-  [CC_CAPS] = COMBO(cc_combo, CW_TOGG),
+//  [CC_CAPS] = COMBO(cc_combo, CW_TOGG),
   [IO_TOGG] = COMBO(io_combo, CM_TOGG),
 //  [QE_SHFT] = COMBO(qe_combo, TOG_ASHFT),
   [VI_COPY] = COMBO(cp_combo, VI_COPY),
@@ -111,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_EQL,
  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
  MY_ESC, MY_AGUI, MY_SALT, MY_DSFT, MY_FCTL, KC_G,                         KC_H, MY_JCTL, MY_KSFT, MY_LALT, MY_CGUI,    KC_QUOT,
- KC_LSFT,  TG_BUTN,  KC_X,   KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC,    KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
+ KC_LSFT,  KC_Z,  KC_X,   KC_C,    KC_V,    KC_B,    KC_LBRC, KC_BSPC,    KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
                       TG_MEDI, TG_NAV, TG_NAV, TG_MOUS,        TG_SYMB, TG_NUM, KC_BSPC, TG_FUN
 ),
 
@@ -119,34 +121,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
  KC_LCTL,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                          KC_H,    KC_J,    KC_K,    KC_L,    KC_I,    KC_QUOT,
- KC_LSFT,  TG_BUTN,  KC_X,  KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC,     KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,    KC_RSFT,
+ KC_LSFT,  KC_Z,  KC_X,  KC_C,    KC_V,    KC_B,    KC_SPC, KC_BSPC,     KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,    KC_RSFT,
                       TG_MEDI, TG_NAV, TG_NAV, TG_MOUS,                    KC_ENT,  KC_SPC, KC_BSPC,  TG_FUN
 ),
 
  [NAV] = LAYOUT(
- _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______,  _______, KC_PSCR,
+ _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______,  KC_PSCR, KC_DEL,
  _______, _______, _______, _______, _______, _______,                   VI_COPY, KC_COPY, KC_PSTE, KC_UNDO, VI_PASTE, _______,
  _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                   KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,   KC_END, SEL_WORD,
- _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_INS,  _______, SEL_LINE,
+ _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_INS,  KC_BSLS, SEL_LINE,
                   _______, _______, _______,  _______,                    KC_ENT,  KC_SPC, KC_BSPC,  KC_DEL
 ),
 
  [MOUS] = LAYOUT(
  _______, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, _______,
  _______, _______, _______, _______, _______, _______,                    KC_CUT , KC_COPY, KC_PSTE, KC_UNDO, _______, _______,
- _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
- _______, _______, _______, _______, _______, _______,  _______, _______, KC_WH_L, KC_WH_D, KC_WH_U, KC_MS_R, KC_INS , _______,
+ _______, _______, _______, _______, _______, _______,                    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
+ _______, _______, _______, _______, _______, _______,  KC_LBRC, KC_RBRC, KC_WH_L, KC_WH_D, KC_WH_U, KC_MS_R, KC_INS , _______,
                  _______, _______, _______, _______,                            KC_BTN2, KC_BTN1, KC_BTN3, _______
 ),
 
- [BUTN] = LAYOUT(
- _______, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, _______,
- _______,  _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, QK_BOOT,
- _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                     _______, _______, _______, _______, _______, _______,
- _______, _______, KC_CUT , KC_COPY, KC_PSTE, _______,  _______,  _______, _______, _______, _______, _______, _______, _______,
-                   _______, _______, _______, _______,                     _______, _______, _______, _______
+//  [BUTN] = LAYOUT(
+//  _______, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, _______,
+//  _______,  _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, QK_BOOT,
+//  _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                     _______, _______, _______, _______, _______, _______,
+//  _______, _______, KC_CUT , KC_COPY, KC_PSTE, _______,  _______,  _______, _______, _______, _______, _______, _______, _______,
+//                    _______, _______, _______, _______,                     _______, _______, _______, _______
 
-),
+// ),
  [MEDI] = LAYOUT(
   _______, KC_MUTE, KC_VOLD, KC_VOLU,_______, _______,                    KC_BRID, KC_BRIU, _______, _______, _______,  _______,
   _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______,  QK_BOOT,
@@ -158,7 +160,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [NUM] = LAYOUT(
     _______,  _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, QK_BOOT,
  KC_NUM,    KC_LBRC, KC_7   , KC_8   , KC_9   , KC_RBRC,        _______, _______, _______, _______, _______, _______,
- KC_NUM,   KC_QUOT, KC_4   , KC_5   , KC_6   , KC_EQL ,        _______, _______, KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI,
+ KC_NUM,   KC_QUOT, KC_4   , KC_5   , KC_6   , KC_EQL ,        KC_LBRC, KC_RBRC, KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI,
  _______,    KC_GRV , KC_1   , KC_2   , KC_3   , KC_BSLS,        _______, _______, _______, _______, _______, _______, _______, _______,
              _______, KC_0   , KC_DOT , KC_MINS,        _______, _______, _______, _______
 ),
@@ -166,7 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [SYMB] = LAYOUT(
   _______,  _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, QK_BOOT,
   _______,  KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR,                   _______, _______, _______, _______, _______, _______,
-  _______,  KC_DQT , KC_DLR , KC_PERC, KC_CIRC, KC_PLUS,                   _______, KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI, _______,
+  KC_CAPS,  KC_DQT , KC_DLR , KC_PERC, KC_CIRC, KC_PLUS,                   _______, KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI, _______,
   _______,  KC_TILD, KC_EXLM, KC_AT  , KC_HASH, KC_PIPE, _______, _______, _______, _______, _______, _______, _______, _______,
                      _______, KC_LPRN, KC_RPRN, KC_UNDS,                   _______, _______, _______, _______
 ),
@@ -398,9 +400,9 @@ static void print_status_narrow(void) {
          case MOUS:
              oled_write("Mouse", false);
              break;
-         case BUTN:
-             oled_write("Buttn", false);
-             break;
+     //    case BUTN:
+     //        oled_write("Buttn", false);
+     //        break;
          case MEDI:
              oled_write("Media", false);
              break;
@@ -458,7 +460,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 PLAY_NOTE_ARRAY(tone_plover, false, 0);
                 #endif
             layer_off(MOUS);
-            layer_off(BUTN);
+        //    layer_off(BUTN);
             layer_off(NUM);
             layer_off(SYMB);
             layer_on(GAME);
