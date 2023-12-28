@@ -31,7 +31,7 @@ enum custom_keycodes {
 #define TG_MEDI LT(MEDI, KC_ESC )
 #define TG_NAV  LT(NAV , KC_SPC )
 #define TG_MOUS LT(MOUS, KC_TAB )
-#define TG_SYMB LT(SYMB, KC_ENT )
+//#define TG_SYMB LT(SYMB, KC_ENT )
 #define TG_NUM  LT(NUM , KC_SPC)
 #define TG_FUN  LT(FUN , KC_DEL )
 //#define TG_BUTN LT(BUTN, KC_Z   )
@@ -47,7 +47,7 @@ enum layer_number {
   MEDI,
   NUM,
   FUN,
-  SYMB
+//  SYMB
 };
 
 // COMBOS
@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
  MY_ESC, MY_AGUI, MY_SALT, MY_DSFT, MY_FCTL, KC_G,                         KC_H, MY_JCTL, MY_KSFT, MY_LALT, MY_CGUI,    KC_QUOT,
  KC_LSFT,  KC_Z,  KC_X,   KC_C,    KC_V,    KC_B,    KC_SPC, KC_BSPC,    KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
-                      TG_MEDI, TG_NAV, TG_NAV, TG_MOUS,        TG_SYMB, TG_NUM, KC_BSPC, TG_FUN
+                      TG_MEDI, TG_NAV, TG_NAV, TG_MOUS,        KC_ENT, TG_NUM, KC_BSPC, TG_FUN
 ),
 
  [GAME] = LAYOUT(
@@ -164,7 +164,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  _______,    KC_GRV , KC_1   , KC_2   , KC_3   , KC_BSLS,        _______, _______, _______, _______, _______, _______, _______, _______,
              _______, KC_0   , KC_DOT , KC_MINS,        _______, _______, _______, _______
 ),
-
+/*
  [SYMB] = LAYOUT(
   _______,  _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, QK_BOOT,
   _______,  KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR,                   _______, _______, _______, _______, _______, _______,
@@ -172,7 +172,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,  KC_TILD, KC_EXLM, KC_AT  , KC_HASH, KC_PIPE, _______, _______, _______, _______, _______, _______, _______, _______,
                      _______, KC_LPRN, KC_RPRN, KC_UNDS,                   _______, _______, _______, _______
 ),
-
+*/
  [FUN] = LAYOUT(
   _______,    KC_F1,   KC_F2,    KC_F3,   KC_F4,    KC_F5,                      KC_F6,    KC_F7,   KC_F8,   KC_F9,  KC_F10, QK_BOOT,
   _______,   KC_F11,  KC_F12,  _______, _______,  _______,                   _______,  _______, _______, _______, _______, _______,
@@ -409,9 +409,9 @@ static void print_status_narrow(void) {
          case NUM:
              oled_write("Numbr", false);
              break;
-         case SYMB:
-             oled_write("Symbl", false);
-             break;
+     //    case SYMB:
+     //        oled_write("Symbl", false);
+     //        break;
          case FUN:
              oled_write("Funct", false);
              break;
@@ -462,7 +462,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             layer_off(MOUS);
         //    layer_off(BUTN);
             layer_off(NUM);
-            layer_off(SYMB);
+        //    layer_off(SYMB);
             layer_on(GAME);
         }
         return false;
