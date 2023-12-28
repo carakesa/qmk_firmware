@@ -31,10 +31,8 @@ enum custom_keycodes {
 #define TG_MEDI LT(MEDI, KC_ESC )
 #define TG_NAV  LT(NAV , KC_SPC )
 #define TG_MOUS LT(MOUS, KC_TAB )
-//#define TG_SYMB LT(SYMB, KC_ENT )
 #define TG_NUM  LT(NUM , KC_SPC)
 #define TG_FUN  LT(FUN , KC_DEL )
-//#define TG_BUTN LT(BUTN, KC_Z   )
 
 
 // LAYERS
@@ -43,39 +41,29 @@ enum layer_number {
   GAME,
   NAV,
   MOUS,
- // BUTN,
   MEDI,
   NUM,
   FUN,
-//  SYMB
 };
 
 // COMBOS
 enum combos {
-//  CC_CAPS,
   IO_TOGG,
-//  QE_SHFT,
   VI_COPY,
   VI_PASTE,
   MY_DEL,
-//  SD_LAYER
 };
 
-//const uint16_t PROGMEM cc_combo[] = {KC_C, KC_COMM, COMBO_END};
 const uint16_t PROGMEM io_combo[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM cp_combo[] = {KC_LCTL, KC_INS, COMBO_END};
 const uint16_t PROGMEM pst_combo[] = {KC_LSFT, KC_INS, COMBO_END};
 const uint16_t PROGMEM del_combo[] = {MY_DSFT, KC_BSPC, COMBO_END};
-//const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};
 
 combo_t key_combos[] = {
-//  [CC_CAPS] = COMBO(cc_combo, CW_TOGG),
   [IO_TOGG] = COMBO(io_combo, CM_TOGG),
-//  [QE_SHFT] = COMBO(qe_combo, TOG_ASHFT),
   [VI_COPY] = COMBO(cp_combo, VI_COPY),
   [VI_PASTE] = COMBO(pst_combo, VI_PASTE),
   [MY_DEL] = COMBO(del_combo, MY_DEL),
-//  [SD_LAYER] = COMBO(sd_combo, MO(_LAYER)),
 };
 
 
@@ -129,8 +117,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [NAV] = LAYOUT(
  QK_BOOT, _______, _______, _______, _______, _______,                   _______, _______, _______, _______,  KC_PSCR, KC_DEL,
  _______, _______, _______, _______, _______, _______,                   KC_COPY, KC_UNDO, KC_INS, _______, KC_PASTE, KC_BSPC,
- _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                   KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,   KC_END, SEL_WORD,
- _______, _______, _______, _______, _______, _______, _______, KC_RBRC, KC_HOME, KC_PGDN,  KC_PGUP,  KC_ENC,  KC_BSLS, SEL_LINE,
+ KC_CAPS, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                   KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,   KC_END, SEL_WORD,
+ _______, _______, _______, _______, _______, _______, _______, KC_RBRC, KC_HOME, KC_PGDN,  KC_PGUP,  KC_END,  KC_BSLS, SEL_LINE,
                   _______, _______, _______,  _______,                    KC_ENT,  KC_SPC, KC_BSPC,  KC_DEL
 ),
 
@@ -139,19 +127,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  QK_BOOT, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, KC_PSCR, KC_DEL,
  _______, _______, _______, _______, _______, _______,                    KC_COPY, KC_UNDO, KC_INS, _______, KC_PASTE, KC_BSPC,
  _______, _______, _______, _______, _______, _______,                    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
- _______, _______, _______, _______, _______, _______,  KC_SPC, KC_RBRC,  KC_WH_L, KC_WH_U, KC_WH_D, KC_MS_R, _______, _______,
+ _______, _______,  KC_CUT, _______, _______, _______,  KC_SPC, KC_RBRC,  KC_WH_L, KC_WH_D, KC_WH_U, KC_MS_R, _______, _______,
                  _______, _______, _______, _______,                            KC_BTN2, KC_BTN1, KC_BTN3, _______
 ),
 
-//  [BUTN] = LAYOUT(
-//  _______, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, _______,
-//  _______,  _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, QK_BOOT,
-//  _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                     _______, _______, _______, _______, _______, _______,
-//  _______, _______, KC_CUT , KC_COPY, KC_PSTE, _______,  _______,  _______, _______, _______, _______, _______, _______, _______,
-//                    _______, _______, _______, _______,                     _______, _______, _______, _______
 
-// ),
- [MEDI] = LAYOUT(
+  [MEDI] = LAYOUT(
   QK_BOOT, KC_MUTE, KC_VOLD, KC_VOLU,_______, _______,                    KC_BRID, KC_BRIU, _______, _______, _______,  QK_BOOT,
   _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______,  _______,
   _______, KC_MPRV, KC_MNXT, KC_LSFT, KC_LCTL, _______,                   KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, _______,  _______,
@@ -160,28 +141,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
  [NUM] = LAYOUT(
-  _______,  _______, KC_NUM, KC_PSLS, KC_PAST , KC_PMNS,                    _______, _______, _______, _______, _______, QK_BOOT,
+  KC_ESC,   _______, KC_NUM, KC_PSLS, KC_PAST , KC_PMNS,                    _______, _______, _______, _______, _______, QK_BOOT,
   KC_TAB,   _______, KC_7   , KC_8   , KC_9   , KC_PPLS,                    _______, _______, _______, _______, _______, _______,
-  MY_ESC,   _______, KC_4   , KC_5   , KC_6   , KC_PPLS,                    _______, KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI, _______,
+  KC_CAPS,  _______, KC_4   , KC_5   , KC_6   , KC_PPLS,                    _______, KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI, _______,
   _______,  _______, KC_1   , KC_2   , KC_3   , KC_PENT, KC_LBRC, KC_RBRC,  _______, _______, _______, _______, _______, _______,
                       _______, KC_0   , KC_DOT , KC_ENT,                    _______, _______, _______, _______
 ),
-/*
- [SYMB] = LAYOUT(
-  _______,  _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, QK_BOOT,
-  _______,  KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR,                   _______, _______, _______, _______, _______, _______,
-  KC_CAPS,  KC_DQT , KC_DLR , KC_PERC, KC_CIRC, KC_PLUS,                   _______, KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI, _______,
-  _______,  KC_TILD, KC_EXLM, KC_AT  , KC_HASH, KC_PIPE, _______, _______, _______, _______, _______, _______, _______, _______,
-                     _______, KC_LPRN, KC_RPRN, KC_UNDS,                   _______, _______, _______, _______
-),
-*/
- [FUN] = LAYOUT(
-  KC_F1,   KC_F2,    KC_F3,   KC_F4,    KC_F5,      KC_F6,                   KC_F7,   KC_F8,   KC_F9,  KC_F10, KC_F11, KC_F12
+
+
+  [FUN] = LAYOUT(
+  KC_F1,   KC_F2,    KC_F3,   KC_F4,    KC_F5,      KC_F6,                   KC_F7,   KC_F8,   KC_F9,  KC_F10, KC_F11, KC_F12,
   _______,  _______, _______, _______,  _______,  _______,                   _______,  _______, _______, _______, _______, _______,
-  _______,  RGB_TOG, RGB_HUI,  RGB_SAI, RGB_VAI,  GAME_ON,                   _______,  KC_RCTL,  KC_RSFT, KC_LALT, KC_RGUI, _______,
+  KC_CAPS,  RGB_TOG, RGB_HUI,  RGB_SAI, RGB_VAI,  GAME_ON,                   _______,  KC_RCTL,  KC_RSFT, KC_LALT, KC_RGUI, _______,
   _______,  RGB_MOD, RGB_HUD,  RGB_SAD, RGB_VAD,  GAME_OFF, KC_LBRC, _______, _______,  _______,  _______, _______, _______, _______,
                      _______,   KC_ESC,  KC_SPC,  KC_TAB ,                   _______,  _______,  _______, _______
- )
+)
 };
 
 // clang-format on
