@@ -1,8 +1,8 @@
 # Stuff I don't need in my copy!
 #
-/keyboards/*
-!/keyboards/boardsource/lulu/*
-!/keyboards/lily58/*
+keyboards/*
+!keyboards/boardsource/lulu/*
+!keyboards/lily58/*
 
 
 
