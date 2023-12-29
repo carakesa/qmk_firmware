@@ -37,8 +37,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //#define HOLD_ON_OTHER_KEY_PRESS
 #define PERMISSIVE_HOLD
-#define OLED_TIMEOUT 120000
-#define OLED_BRIGHTNESS 120
+#define OLED_TIMEOUT 90000
+#define OLED_FADE_OUT 45000
+#define OLED_BRIGHTNESS 100
+#define OLED_FADE_OUT_INTERVAL 8
 #define SPLIT_LED_STATE_ENABLE
 #define SPLIT_LED_STATE_ENABLE
 #define SPLIT_WPM_ENABLE //Enable WPM across split keyboards
