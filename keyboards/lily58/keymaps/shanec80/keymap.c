@@ -115,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
  [NAV] = LAYOUT(
- QK_BOOT, _______, _______, _______, _______, _______,                   _______, _______, _______, _______,  KC_PSCR, KC_DEL,
+ QK_BOOT, _______, _______, _______, _______, _______,                   _______, _______, _______,KC_PSCR, KC_DEL,  KC_MINS,
  _______, _______, _______, _______, _______, _______,                   KC_COPY, KC_UNDO, KC_INS, KC_APP, KC_PASTE,  KC_BSPC,
  KC_CAPS, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                   KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,   KC_END, SEL_WORD,
  _______, _______, _______, _______, _______, _______, _______, KC_RBRC, KC_HOME, KC_PGDN,  KC_PGUP,  KC_END,  KC_BSLS, SEL_LINE,
@@ -180,9 +180,9 @@ void oled_render_boot(bool bootloader) {
     oled_render_dirty(true);
 }
 
-bool shutdown_user(bool jump_to_bootloader) {
-    oled_render_boot(jump_to_bootloader);
-}
+//bool shutdown_user(bool jump_to_bootloader) {
+//    oled_render_boot(jump_to_bootloader);
+//}
 
 
 
