@@ -119,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  _______, _______, _______, _______, _______, _______,                   KC_COPY, KC_UNDO, KC_INS, KC_APP, KC_PASTE,  KC_BSPC,
  KC_CAPS, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                   KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,   KC_END, SEL_WORD,
  _______, _______, _______, _______, _______, _______, _______, KC_RBRC, KC_HOME, KC_PGDN,  KC_PGUP,  KC_END,  KC_BSLS, SEL_LINE,
-                  _______, _______, _______,  _______,                    KC_ENT,  KC_SPC, KC_BSPC,  KC_DEL
+                  _______, _______, _______,  _______,                    KC_ENT,  KC_BSPC, KC_BSPC,  KC_DEL
 ),
 
 
