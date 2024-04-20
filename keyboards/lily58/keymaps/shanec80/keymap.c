@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+// sac
+
+>>>>>>> dev0
 #include QMK_KEYBOARD_H
 
 #include <stdio.h>
@@ -29,10 +34,15 @@ enum custom_keycodes {
 #define TG_MEDI LT(MEDI, KC_ESC )
 #define TG_NAV  LT(NAV , KC_SPC )
 #define TG_MOUS LT(MOUS, KC_TAB )
+<<<<<<< HEAD
 #define TG_SYMB LT(SYMB, KC_ENT )
 #define TG_NUM  LT(NUM , KC_SPC)
 #define TG_FUN  LT(FUN , KC_DEL )
 #define TG_BUTN LT(BUTN, KC_Z   )
+=======
+#define TG_NUM  LT(NUM , KC_SPC)
+#define TG_FUN  LT(FUN , KC_DEL )
+>>>>>>> dev0
 
 
 // LAYERS
@@ -41,15 +51,22 @@ enum layer_number {
   GAME,
   NAV,
   MOUS,
+<<<<<<< HEAD
   BUTN,
   MEDI,
   NUM,
   FUN,
   SYMB
+=======
+  MEDI,
+  NUM,
+  FUN,
+>>>>>>> dev0
 };
 
 // COMBOS
 enum combos {
+<<<<<<< HEAD
   CC_CAPS,
   IO_TOGG,
 //  QE_SHFT,
@@ -60,10 +77,19 @@ enum combos {
 };
 
 const uint16_t PROGMEM cc_combo[] = {KC_C, KC_COMM, COMBO_END};
+=======
+  IO_TOGG,
+  VI_COPY,
+  VI_PASTE,
+  MY_DEL,
+};
+
+>>>>>>> dev0
 const uint16_t PROGMEM io_combo[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM cp_combo[] = {KC_LCTL, KC_INS, COMBO_END};
 const uint16_t PROGMEM pst_combo[] = {KC_LSFT, KC_INS, COMBO_END};
 const uint16_t PROGMEM del_combo[] = {MY_DSFT, KC_BSPC, COMBO_END};
+<<<<<<< HEAD
 //const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};
 
 combo_t key_combos[] = {
@@ -74,6 +100,14 @@ combo_t key_combos[] = {
   [VI_PASTE] = COMBO(pst_combo, VI_PASTE),
   [MY_DEL] = COMBO(del_combo, MY_DEL),
 //  [SD_LAYER] = COMBO(sd_combo, MO(_LAYER)),
+=======
+
+combo_t key_combos[] = {
+  [IO_TOGG] = COMBO(io_combo, CM_TOGG),
+  [VI_COPY] = COMBO(cp_combo, VI_COPY),
+  [VI_PASTE] = COMBO(pst_combo, VI_PASTE),
+  [MY_DEL] = COMBO(del_combo, MY_DEL),
+>>>>>>> dev0
 };
 
 
@@ -111,14 +145,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_EQL,
  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
  MY_ESC, MY_AGUI, MY_SALT, MY_DSFT, MY_FCTL, KC_G,                         KC_H, MY_JCTL, MY_KSFT, MY_LALT, MY_CGUI,    KC_QUOT,
+<<<<<<< HEAD
  KC_LSFT,  TG_BUTN,  KC_X,   KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC,    KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
                       TG_MEDI, TG_NAV, TG_NAV, TG_MOUS,        TG_SYMB, TG_NUM, KC_BSPC, TG_FUN
+=======
+ KC_LSFT,  KC_Z,  KC_X,   KC_C,    KC_V,    KC_B,    KC_SPC, KC_BSPC,    KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
+                      TG_MEDI, TG_NAV, TG_NAV, TG_MOUS,        KC_ENT, TG_NUM, KC_BSPC, TG_FUN
+>>>>>>> dev0
 ),
 
  [GAME] = LAYOUT(
  KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
  KC_LCTL,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                          KC_H,    KC_J,    KC_K,    KC_L,    KC_I,    KC_QUOT,
+<<<<<<< HEAD
  KC_LSFT,  TG_BUTN,  KC_X,  KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC,     KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,    KC_RSFT,
                       TG_MEDI, TG_NAV, TG_NAV, TG_MOUS,                    KC_ENT,  KC_SPC, KC_BSPC,  TG_FUN
 ),
@@ -178,6 +218,55 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,  _______, _______,  _______, _______,  _______, _______, _______, _______,  _______,  _______, _______, _______, _______,
                      _______,   KC_ESC,  KC_SPC,  KC_TAB ,                   _______,  _______,  _______, _______
  )
+=======
+ KC_LSFT,  KC_Z,  KC_X,  KC_C,    KC_V,    KC_B,    KC_SPC, KC_BSPC,     KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,    KC_RSFT,
+                      TG_MEDI, TG_NAV, TG_NAV, TG_MOUS,                    KC_ENT,  KC_SPC, KC_BSPC,  TG_FUN
+),
+
+
+ [NAV] = LAYOUT(
+ QK_BOOT, _______, _______, _______, _______, _______,                   _______, _______, _______,KC_PSCR, KC_DEL,  KC_MINS,
+ _______, _______, _______, _______, _______, _______,                   KC_COPY, KC_UNDO, KC_INS, KC_APP, KC_PASTE,  KC_BSPC,
+ KC_CAPS, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                   KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,   KC_END, SEL_WORD,
+ _______, _______, _______, _______, _______, _______, _______, KC_RBRC, KC_HOME, KC_PGDN,  KC_PGUP,  KC_END,  KC_BSLS, SEL_LINE,
+                  _______, _______, _______,  _______,                    KC_ENT,  KC_BSPC, KC_BSPC,  KC_DEL
+),
+
+
+ [MOUS] = LAYOUT(
+ QK_BOOT, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, KC_PSCR, KC_DEL,
+ _______, _______, _______, _______, _______, _______,                    KC_COPY, KC_UNDO, KC_INS,  KC_APP, KC_PASTE, KC_BSPC,
+ _______, _______, _______, _______, _______, _______,                    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
+ _______, _______,  KC_CUT, _______, _______, _______,  KC_SPC, KC_RBRC,  KC_WH_L, KC_WH_D, KC_WH_U, KC_MS_R, _______, _______,
+                 _______, _______, _______, _______,                            KC_BTN2, KC_BTN1, KC_BTN3, _______
+),
+
+
+  [MEDI] = LAYOUT(
+  QK_BOOT, KC_MUTE, KC_VOLD, KC_VOLU,_______, _______,                    KC_BRID, KC_BRIU, _______, _______, _______,  QK_BOOT,
+  _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______,  _______,
+  _______, KC_MPRV, KC_MNXT, KC_LSFT, KC_LCTL, _______,                   KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, _______,  _______,
+  _______, _______, _______, _______, _______, _______, _______, KC_MPLY, _______, _______, _______, _______, _______,  _______,
+                    _______, _______, _______, _______,                   KC_MPLY, _______, _______, _______
+),
+
+ [NUM] = LAYOUT(
+  KC_ESC,   _______, KC_NUM, KC_PSLS, KC_PAST , KC_PMNS,                    _______, _______, _______, _______, _______, QK_BOOT,
+  KC_TAB,   _______, KC_7   , KC_8   , KC_9   , KC_PPLS,                    _______, _______, _______, _______, _______, _______,
+  KC_CAPS,  _______, KC_4   , KC_5   , KC_6   , KC_PPLS,                    _______, KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI, _______,
+  _______,  _______, KC_1   , KC_2   , KC_3   , KC_PENT, KC_LBRC, KC_RBRC,  _______, _______, _______, _______, _______, _______,
+                      _______, KC_0   , KC_DOT , KC_ENT,                    _______, _______, _______, _______
+),
+
+
+  [FUN] = LAYOUT(
+  KC_F1,   KC_F2,    KC_F3,   KC_F4,    KC_F5,      KC_F6,                   KC_F7,   KC_F8,   KC_F9,  KC_F10, KC_F11, KC_F12,
+  _______,  _______, _______, _______,  _______,  _______,                   _______,  _______, _______, _______, _______, _______,
+  KC_CAPS,  RGB_TOG, RGB_HUI,  RGB_SAI, RGB_VAI,  GAME_ON,                   _______,  KC_RCTL,  KC_RSFT, KC_LALT, KC_RGUI, _______,
+  _______,  RGB_MOD, RGB_HUD,  RGB_SAD, RGB_VAD,  GAME_OFF, KC_LBRC, _______, _______,  _______,  _______, _______, _______, _______,
+                     _______,   KC_ESC,  KC_SPC,  KC_TAB ,                   _______,  _______,  _______, _______
+)
+>>>>>>> dev0
 };
 
 // clang-format on
@@ -186,6 +275,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #ifdef OLED_ENABLE
 
+<<<<<<< HEAD
+=======
+// OLED Status for Firmware Loads
+
+void oled_render_boot(bool bootloader) {
+    oled_clear();
+    for (int i = 0; i < 16; i++) {
+        oled_set_cursor(0, i);
+        if (bootloader) {
+            oled_write_P(PSTR("Awaiting New Firmware "), false);
+        } else {
+            oled_write_P(PSTR("Rebooting "), false);
+        }
+    }
+
+    oled_render_dirty(true);
+}
+
+//bool shutdown_user(bool jump_to_bootloader) {
+//    oled_render_boot(jump_to_bootloader);
+//}
+
+
+
+>>>>>>> dev0
 /* 32 * 32 logo */
 static void render_logo(void) {
     static const char PROGMEM hell_logo[] = {0x00, 0x80, 0xc0, 0xc0, 0x60, 0x60, 0x30, 0x30, 0x18, 0x1c, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x80, 0xe0, 0x78, 0x1e, 0x06, 0x00, 0x0c, 0x1c, 0x18, 0x30, 0x30, 0x60, 0x60, 0xc0, 0xc0, 0x80, 0x00, 0x01, 0x03, 0x07, 0x06, 0x0c, 0x0c, 0x18, 0x18, 0x30, 0x70, 0x60, 0x00, 0xc0, 0xf0, 0x3c, 0x0f, 0x03, 0x00, 0x00, 0x00, 0x00, 0x60, 0x70, 0x30, 0x18, 0x18, 0x0c, 0x0c, 0x06, 0x07, 0x03, 0x01, 0x00, 0xf8, 0xf8, 0x80, 0x80, 0x80, 0xf8, 0xf8, 0x00, 0x80, 0xc0, 0xc0, 0x40, 0xc0, 0xc0, 0x80, 0x00, 0xf8, 0xf8, 0x00, 0xf8, 0xf8, 0x00, 0x08, 0x38, 0x08, 0x00, 0x38, 0x08, 0x30, 0x08, 0x38, 0x00, 0x1f, 0x1f, 0x01, 0x01, 0x01, 0x1f, 0x1f, 0x00, 0x0f, 0x1f, 0x1a, 0x12, 0x1a, 0x1b, 0x0b, 0x00, 0x1f, 0x1f, 0x00, 0x1f, 0x1f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
@@ -398,18 +512,30 @@ static void print_status_narrow(void) {
          case MOUS:
              oled_write("Mouse", false);
              break;
+<<<<<<< HEAD
          case BUTN:
              oled_write("Buttn", false);
              break;
+=======
+     //    case BUTN:
+     //        oled_write("Buttn", false);
+     //        break;
+>>>>>>> dev0
          case MEDI:
              oled_write("Media", false);
              break;
          case NUM:
              oled_write("Numbr", false);
              break;
+<<<<<<< HEAD
          case SYMB:
              oled_write("Symbl", false);
              break;
+=======
+     //    case SYMB:
+     //        oled_write("Symbl", false);
+     //        break;
+>>>>>>> dev0
          case FUN:
              oled_write("Funct", false);
              break;
@@ -420,6 +546,7 @@ static void print_status_narrow(void) {
              oled_write("UNDEF", false);
      }
 
+<<<<<<< HEAD
 
     /* KEYBOARD PET RENDER START */
 
@@ -450,6 +577,26 @@ bool oled_task_user(void) {
     led_usb_state = host_keyboard_led_state();
 //***** KEYBOARD PET VARIABLES END ********//
 
+=======
+   /* KEYBOARD PET RENDER START */
+
+    render_luna(0, 13);
+
+    /* KEYBOARD PET RENDER END */
+}
+
+oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_270; }
+
+bool oled_task_user(void) {
+    /* KEYBOARD PET VARIABLES START */
+
+    current_wpm   = get_current_wpm();
+    led_usb_state = host_keyboard_led_state();
+
+    /* KEYBOARD PET VARIABLES END */
+
+    if (is_keyboard_master()) {
+>>>>>>> dev0
         print_status_narrow();
     } else {
         print_logo_narrow();
@@ -457,7 +604,11 @@ bool oled_task_user(void) {
     return false;
 }
 
+<<<<<<< HEAD
 
+=======
+#endif
+>>>>>>> dev0
 // ---- MACROS and Luna Status (Luna at the End) ----- //
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -470,9 +621,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 PLAY_NOTE_ARRAY(tone_plover, false, 0);
                 #endif
             layer_off(MOUS);
+<<<<<<< HEAD
             layer_off(BUTN);
             layer_off(NUM);
             layer_off(SYMB);
+=======
+        //    layer_off(BUTN);
+            layer_off(NUM);
+        //    layer_off(SYMB);
+>>>>>>> dev0
             layer_on(GAME);
         }
         return false;
