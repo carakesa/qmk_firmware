@@ -2,16 +2,12 @@
 #include QMK_KEYBOARD_H
 
 #include <stdio.h>
-//#include ""shanec80-split.h"
 
 #ifdef PROTOCOL_LUFA
   #include "lufa.h"
   #include "split_util.h"
 #endif
 
-// #ifdef SSD1306OLED
-//  #include "ssd1306.h"
-// #endif
 
 //clang-format off
 enum custom_keycodes {
@@ -40,7 +36,6 @@ enum custom_keycodes {
 #define TG_FUN  LT(FUN , KC_DEL )
 #define TG_BUTN LT(BUTN, KC_Z   )
 
-//  #define caps_word_set_user(bool active)
 enum layer_number {
   BASE = 0,
   GAME,
@@ -56,11 +51,9 @@ enum layer_number {
 enum combos {
   CC_CAPS,
   IO_TOGG,
-//  QE_SHFT,
   VI_COPY,
   VI_PASTE,
   MY_DEL,
-//  SD_LAYER
 };
 
 const uint16_t PROGMEM cc_combo[] = {KC_C, KC_COMM, COMBO_END};
@@ -68,16 +61,13 @@ const uint16_t PROGMEM io_combo[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM cp_combo[] = {KC_LCTL, KC_INS, COMBO_END};
 const uint16_t PROGMEM pst_combo[] = {KC_LSFT, KC_INS, COMBO_END};
 const uint16_t PROGMEM del_combo[] = {MY_DSFT, KC_BSPC, COMBO_END};
-//const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};
 
 combo_t key_combos[] = {
   [CC_CAPS] = COMBO(cc_combo, CW_TOGG),
   [IO_TOGG] = COMBO(io_combo, CM_TOGG),
-//  [QE_SHFT] = COMBO(qe_combo, TOG_ASHFT),
   [VI_COPY] = COMBO(cp_combo, VI_COPY),
   [VI_PASTE] = COMBO(pst_combo, VI_PASTE),
   [MY_DEL] = COMBO(del_combo, MY_DEL),
-//  [SD_LAYER] = COMBO(sd_combo, MO(_LAYER)),
 };
 
 
@@ -112,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  [BASE] = LAYOUT(
  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_EQL,
- KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
+ KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
  MY_ESC, MY_AGUI, MY_SALT, MY_DSFT, MY_FCTL, KC_G,                         KC_H, MY_JCTL, MY_KSFT, MY_LALT, MY_CGUI,    KC_QUOT,
  KC_LSFT,  TG_BUTN,  KC_X,   KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC,    KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
                       TG_MEDI, TG_NAV, TG_NAV, TG_MOUS,        TG_SYMB, TG_NUM, KC_BSPC, TG_FUN
@@ -127,17 +117,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
  [NAV] = LAYOUT(
- _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______,  _______, KC_PSCR,
+ _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______,  _______, KC_MINS,
  _______, _______, _______, _______, _______, _______,                   VI_COPY, KC_COPY, KC_PSTE, KC_UNDO, VI_PASTE, _______,
- _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                   KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,   KC_END, SEL_WORD,
- _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_INS,  KC_BSLS, SEL_LINE,
-                  _______, _______, _______,  _______,                    KC_ENT,  KC_SPC, KC_BSPC,  KC_DEL
+ MY_ESC, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                   KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,   KC_END, SEL_WORD,
+ _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGDN,  KC_PGUP, _______,  KC_BSLS, SEL_LINE,
+                  _______, _______, _______,  _______,                    TG_SYMB, KC_BSPC, KC_DEL, TG_FUN
 ),
 
  [MOUS] = LAYOUT(
  _______, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, _______,
  _______, _______, _______, _______, _______, _______,                    KC_CUT , KC_COPY, KC_PSTE, KC_UNDO, _______, _______,
- _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
+ MY_ESC, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
  _______, _______, _______, _______, _______, _______,  _______, _______, KC_WH_L, KC_WH_D, KC_WH_U, KC_MS_R, KC_INS , _______,
                  _______, _______, _______, _______,                            KC_BTN2, KC_BTN1, KC_BTN3, _______
 ),
