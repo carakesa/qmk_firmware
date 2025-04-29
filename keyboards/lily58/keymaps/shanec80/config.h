@@ -26,8 +26,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //#define HOLD_ON_OTHER_KEY_PRESS
 
-#define QUICK_TAP_TERM 100
-#define TAPPING_TERM 210
+#define QUICK_TAP_TERM 80
+#define TAPPING_TERM 250
 #define TAPPING_TOGGLE 2
 
 //#define HOLD_ON_OTHER_KEY_PRESS
