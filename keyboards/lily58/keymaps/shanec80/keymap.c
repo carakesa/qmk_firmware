@@ -35,6 +35,8 @@ enum custom_keycodes {
 #define TG_NUM  LT(NUM , KC_SPC)
 #define TG_FUN  LT(FUN , KC_DEL )
 #define TG_BUTN LT(BUTN, KC_Z   )
+//#define MY_LSPC MT(KC_LSFT, KC_SPC)
+//#define MY_RSPC MT(KC_RSFT, KC_SPC)
 
 enum layer_number {
   BASE = 0,
@@ -59,7 +61,7 @@ enum combos {
 const uint16_t PROGMEM cc_combo[] = {KC_C, KC_COMM, COMBO_END};
 const uint16_t PROGMEM io_combo[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM cp_combo[] = {KC_LCTL, KC_INS, COMBO_END};
-const uint16_t PROGMEM pst_combo[] = {KC_LSFT, KC_INS, COMBO_END};
+const uint16_t PROGMEM pst_combo[] = {MY_KSFT, KC_INS, COMBO_END};
 const uint16_t PROGMEM del_combo[] = {MY_DSFT, KC_BSPC, COMBO_END};
 
 combo_t key_combos[] = {
@@ -103,9 +105,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [BASE] = LAYOUT(
  KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_EQL,
  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
- MY_ESC, MY_AGUI, MY_SALT, MY_DSFT, MY_FCTL, KC_G,                         KC_H, MY_JCTL, MY_KSFT, MY_LALT, MY_CGUI,    KC_QUOT,
+ MY_ESC,   MY_AGUI, MY_SALT, MY_DSFT, MY_FCTL, KC_G,                         KC_H, MY_JCTL, MY_KSFT, MY_LALT, MY_CGUI,    KC_QUOT,
  KC_LSFT,  TG_BUTN,  KC_X,   KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC,    KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
-                      TG_MEDI, KC_LSFT, TG_NAV, TG_MOUS,        TG_SYMB, TG_NUM, KC_BSPC, TG_FUN
+                      TG_MEDI, KC_SPC, TG_NAV, TG_MOUS,        TG_SYMB, TG_NUM, KC_SPC, TG_FUN
 ),
 
  [GAME] = LAYOUT(
