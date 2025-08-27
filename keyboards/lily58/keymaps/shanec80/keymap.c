@@ -35,9 +35,12 @@ enum custom_keycodes {
 #define TG_NUM  LT(NUM , KC_SPC)
 #define TG_FUN  LT(FUN , KC_DEL )
 #define TG_BUTN LT(BUTN, KC_Z   )
-//#define MY_LSPC MT(KC_LSFT, KC_SPC)
-//#define MY_RSPC MT(KC_RSFT, KC_SPC)
 
+// Testing New Additions:
+//#define MY_SLSH MT(QK_LAYER_LOCK, KC_SLSH) //layer lock?
+#define MY_RSPC MT(MOD_RSFT, KC_SPC)
+//
+//
 enum layer_number {
   BASE = 0,
   GAME,
@@ -107,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
  MY_ESC,   MY_AGUI, MY_SALT, MY_DSFT, MY_FCTL, KC_G,                         KC_H, MY_JCTL, MY_KSFT, MY_LALT, MY_CGUI,    KC_QUOT,
  KC_LSFT,  TG_BUTN,  KC_X,   KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC,    KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
-                      TG_MEDI, KC_SPC, TG_NAV, TG_MOUS,        TG_SYMB, TG_NUM, KC_SPC, TG_FUN
+                      TG_MEDI, MY_RSPC, TG_NAV, TG_MOUS,        TG_SYMB, TG_NUM, MY_RSPC, TG_FUN
 ),
 
  [GAME] = LAYOUT(
@@ -119,10 +122,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
  [NAV] = LAYOUT(
- _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______,  _______, KC_MINS,
+ _______, _______, _______, _______, _______, _______,                   _______, _______, QK_LLCK, _______,  _______, KC_MINS,
  _______, _______, _______, _______, _______, _______,                   VI_COPY, KC_COPY, KC_PSTE, KC_UNDO, VI_PASTE, _______,
  MY_ESC, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                   KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,   KC_END, SEL_WORD,
- _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGDN,  KC_PGUP, _______,  KC_BSLS, SEL_LINE,
+ _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGDN,  KC_PGUP, _______,  _______, SEL_LINE,
                   _______, _______, _______,  _______,                    TG_SYMB, KC_BSPC, KC_DEL, TG_FUN
 ),
 
@@ -378,7 +381,6 @@ static void print_status_narrow(void) {
     oled_write("LAYER", false);
 
     oled_set_cursor(0, 6);
-
 
      switch (get_highest_layer(layer_state)) {
          case BASE:

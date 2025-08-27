@@ -16,7 +16,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #pragma once
 
 //#define USE_MATRIX_I2C
-
+#define LAYER_LOCK_IDLE_TIMEOUT 60000  // Turn off after 60 seconds
 
 /* Select hand configuration */
 #define MASTER_LEFT
