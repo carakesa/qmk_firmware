@@ -37,9 +37,8 @@ enum custom_keycodes {
 #define TG_BUTN LT(BUTN, KC_Z   )
 
 // Testing New Additions:
-//#define MY_SLSH MT(QK_LAYER_LOCK, KC_SLSH) //layer lock?
-#define MY_RSPC MT(MOD_RSFT, KC_SPC)
 //
+#define MY_SHIFT MT(MOD_LSFT, KC_SPC)
 //
 enum layer_number {
   BASE = 0,
@@ -110,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
  MY_ESC,   MY_AGUI, MY_SALT, MY_DSFT, MY_FCTL, KC_G,                         KC_H, MY_JCTL, MY_KSFT, MY_LALT, MY_CGUI,    KC_QUOT,
  KC_LSFT,  TG_BUTN,  KC_X,   KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC,    KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
-                      TG_MEDI, MY_RSPC, TG_NAV, TG_MOUS,        TG_SYMB, TG_NUM, MY_RSPC, TG_FUN
+                      TG_MEDI, MY_SHIFT, TG_NAV, TG_MOUS,        TG_SYMB, TG_NUM, MY_SHIFT, TG_FUN
 ),
 
  [GAME] = LAYOUT(
@@ -123,15 +122,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  [NAV] = LAYOUT(
  _______, _______, _______, _______, _______, _______,                   _______, _______, QK_LLCK, _______,  _______, KC_MINS,
- _______, _______, _______, _______, _______, _______,                   VI_COPY, KC_COPY, KC_PSTE, KC_UNDO, VI_PASTE, _______,
+ _______, _______, _______, _______, _______, _______,                   VI_COPY, KC_UNDO, KC_PSTE, KC_UNDO, VI_PASTE, _______,
  MY_ESC, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                   KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,   KC_END, SEL_WORD,
  _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGDN, KC_PGDN,  KC_PGUP, _______,  _______, SEL_LINE,
                   _______, _______, _______,  _______,                    TG_SYMB, KC_BSPC, KC_DEL, TG_FUN
 ),
 
  [MOUS] = LAYOUT(
- _______, _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, _______,
- _______, _______, _______, _______, _______, _______,                    KC_CUT , KC_COPY, KC_PSTE, KC_UNDO, _______, _______,
+ _______, _______, _______, _______, _______, _______,                    _______, _______, QK_LLCK, _______, _______, _______,
+ _______, _______, _______, _______, _______, _______,                    VI_COPY, KC_UNDO, KC_PSTE, KC_UNDO, KC_PASTE, _______,
  MY_ESC, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
  _______, _______, _______, _______, _______, _______,  _______, _______, KC_WH_L, KC_WH_D, KC_WH_U, KC_MS_R, KC_INS , _______,
                  _______, _______, _______, _______,                            KC_BTN2, KC_BTN1, KC_BTN3, _______
@@ -173,7 +172,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,    KC_F1,   KC_F2,    KC_F3,   KC_F4,    KC_F5,                      KC_F6,    KC_F7,   KC_F8,   KC_F9,  KC_F10, QK_BOOT,
   _______,   KC_F11,  KC_F12,  _______, _______,  _______,                   _______,  _______, _______, _______, _______, _______,
  GAME_OFF,  _______, _______,  _______, _______,  GAME_ON,                   _______,  KC_RCTL,  KC_RSFT, KC_LALT, KC_RGUI, _______,
-  _______,  _______, _______,  _______, _______,  _______, _______, _______, _______,  _______,  _______, _______, _______, _______,
+  _______,  _______, KC_CUT,  KC_COPY, KC_PSTE,  _______, _______, _______, _______,  _______,  _______, _______, _______, _______,
                      _______,   KC_ESC,  KC_SPC,  KC_TAB ,                   _______,  _______,  _______, _______
  )
 };
