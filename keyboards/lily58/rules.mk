@@ -1,0 +1,4 @@
+DEFAULT_FOLDER = lily58/rev1
+
+CONVERT_TO=kb2040
+
