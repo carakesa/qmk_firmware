@@ -28,7 +28,7 @@ enum custom_keycodes {
 #define MY_LALT MT(MOD_LALT, KC_L)
 #define MY_CGUI MT(MOD_RGUI, KC_SCLN)
 #define MY_ESC MT(MOD_LCTL, KC_ESCAPE)
-#define TG_MEDI LT(MEDI, KC_ESC )
+#define TG_MEDI LT(MEDI, KC_SPC )
 #define TG_NAV  LT(NAV , KC_SPC )
 #define TG_MOUS LT(MOUS, KC_TAB )
 #define TG_SYMB LT(SYMB, KC_ENT )
@@ -110,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
  MY_ESC,   MY_AGUI, MY_SALT, MY_DSFT, MY_FCTL, KC_G,                         KC_H, MY_JCTL, MY_KSFT, MY_LALT, MY_CGUI,    KC_QUOT,
  KC_LSFT,  TG_BUTN,  KC_X,   KC_C,    KC_V,    KC_B,    KC_LBRC, KC_RBRC,    KC_N   , KC_M   , KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
-                      TG_MEDI, MY_SHIFT, TG_NAV, TG_MOUS,        TG_SYMB, TG_NUM, MY_SHIFT, TG_FUN
+                      TG_MEDI, TG_MEDI, TG_NAV, TG_MOUS,        TG_SYMB, TG_NUM, MY_SHIFT, TG_FUN
 ),
 
  [GAME] = LAYOUT(
@@ -132,9 +132,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [MOUS] = LAYOUT(
 _______, _______, _______, _______, _______, _______,                    _______, _______, QK_LLCK, _______, _______, _______,
  _______, _______, _______, _______, _______, _______,                    VI_COPY, KC_UNDO, KC_PSTE, KC_UNDO, KC_PASTE, _______,
- MY_ESC, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                    KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
- _______, _______, _______, _______, _______, _______,  _______, _______, KC_WH_L, KC_WH_D, KC_WH_U, KC_MS_R, KC_INS , _______,
-                 _______, _______, _______, _______,                            KC_BTN2, KC_BTN1, KC_BTN3, _______
+ MY_ESC, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                    MS_LEFT, MS_DOWN,  MS_UP,   MS_RGHT, _______, _______,
+ _______, _______, _______, _______, _______, _______,  _______, _______, MS_WHLL, MS_WHLU, MS_WHLD, MS_WHLR, KC_INS , _______,
+                 _______, _______, _______, _______,                            MS_BTN2, MS_BTN1, MS_BTN3, _______
 ),
 
  [BUTN] = LAYOUT(
@@ -153,21 +153,15 @@ _______, _______, _______, _______, _______, _______,                    _______
                     _______, _______, _______, _______,                   _______, _______, _______, _______
 ),
 
-/*  [NUM] = LAYOUT(
-    _______,  _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, QK_BOOT,
- KC_NUM,    KC_LBRC, KC_7   , KC_8   , KC_9   , KC_RBRC,        _______, _______, _______, _______, _______, _______,
- KC_NUM,   KC_QUOT, KC_4   , KC_5   , KC_6   , KC_EQL ,        _______, _______, KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI,
- _______,    KC_GRV , KC_1   , KC_2   , KC_3   , KC_BSLS,        _______, _______, _______, _______, _______, _______, _______, _______,
-             _______, KC_0   , KC_DOT , KC_MINS,        _______, _______, _______, _______
-), */
 
 [NUM] = LAYOUT(
-    _______,  _______, _______, _______, _______, _______,                    _______, _______, _______, _______, _______, QK_BOOT,
- KC_NUM,    KC_LBRC, KC_7   , KC_8   , KC_9   , KC_RBRC,                      _______, _______, _______, _______, _______, _______,
- KC_NUM,   KC_1, KC_2   , KC_3   , KC_4   , KC_5 ,                            _______, _______, KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI,
- _______,    KC_GRV , KC_1   , KC_2   , KC_3   , KC_BSLS, _______, _______,   _______, _______, _______, _______, _______, _______,
-             _______, KC_0   , KC_DOT , KC_MINS,                              _______, _______, _______, _______
+ _______,   _______, _______, _______, _______,                    _______, _______, _______, _______, _______, QK_BOOT,
+ _______,   _______, _______, _______, _______,                    _______, _______, _______, _______, _______, _______,
+ _______,   KC_1, KC_2   , KC_3   , KC_4   , KC_5 ,  _______, _______,               _______, _______, KC_RCTL, KC_RSFT, KC_LALT, KC_RGUI,
+:word  _______,   _______, _______, _______, _______,                   _______, _______,   _______, _______, _______, _______, _______, _______,
+             ________, _______, _______, _______,                  _______, _______, _______, _______
 ),
+
 
  [SYMB] = LAYOUT(
   _______,  _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, QK_BOOT,
