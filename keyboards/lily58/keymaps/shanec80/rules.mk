@@ -2,6 +2,7 @@
 #   change to "no" to disable the options, or define them in the Makefile in
 #   the appropriate keymap folder that will get included automatically
 #
+CONVERT_TO = sparkfun_pm2040
 LAYER_LOCK_ENABLE = yes
 WPM_ENABLE = yes
 BOOTMAGIC_ENABLE = yes       # Enable Bootmagic Lite

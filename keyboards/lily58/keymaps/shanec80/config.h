@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define CAPS_WORD_INVERT_ON_SHIFT
 
 //#define HOLD_ON_OTHER_KEY_PRESS
-
+#define FLOW_TAP_TERM 150
 #define QUICK_TAP_TERM 80
 #define TAPPING_TERM 250
 #define TAPPING_TOGGLE 2
